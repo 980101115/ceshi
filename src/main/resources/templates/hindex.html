@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>Login</title>
+
+    <link th:href="@{/css/style.css}"  href="css/style.css" rel="stylesheet">
+    <link th:href="@{/css/style-responsive.css}" href="css/style-responsive.css" rel="stylesheet">
+    <link th:href="@{/css/tab/css/style.css}" href="css/tab/css/style.css" rel="stylesheet">
+
+
+    <script th:src="@{https://code.jquery.com/jquery-3.4.1.min.js}"></script>
+
+</head>
+
+<body class="login-body">
+
+<div  class="tab-wrapper">
+    <form class="form-signin">
+        <div class="form-signin-heading text-center">
+            <h1 class="sign-title">BI HU ( ゜- ゜)つロ</h1>
+            <img th:src="@{/images/login-logo.png}" src="images/login-logo.png" alt=""/>
+            <!--<h3 style="color: #0e8f9f">信息登录</h3><h3 style="color: #0e8f9f">密码登录</h3>-->
+            <ul class="tab-menu" >
+                <li class="active">密码登录</li>
+                <li onclick="hideagain()">注册账号</li>
+                <input type="hidden">哔</input>
+                <input type="hidden">呼</input>
+            </ul>
+        </div>
+
+        <!--tab-->
+        <div class="tab-content">
+            <!--密码-->
+            <div class="login-wrap">
+                <input type="text" class="form-control" placeholder="邮箱账号" id="phonee" name="email" autofocus >
+                <div style='color: red;font-size: 12px;' id ="hidee" ></div>
+                <input type="text" class="form-control" placeholder="密码"id="password" name="password">
+                <a id="a-msg" class="btn btn-lg btn-login btn-block" onclick="checkCode()">
+                    <i class="fa" style="font-size: 30px" >登 录</i>
+                </a>
+
+                <div class="registration">
+                    还没账号?
+                    <a class="" onclick="wu()">
+                        无账号浏览
+                    </a>
+                </div>
+                <label class="checkbox">
+                    <!--<input type="checkbox" value="remember-me"> Remember me-->
+                    <span class="pull-right">
+                           <a data-toggle="modal" href="#myModal">忘记密码</a>
+                </span>
+                </label>
+
+            </div>
+            <!--短信-->
+            <div class="login-wrap">
+
+                <input type="text" class="form-control" placeholder="昵称">
+                <input type="text" class="form-control" placeholder="性别">
+                <input type="text" class="form-control" placeholder="邮箱账号" id="phone" name="phone" autofocus onblur="check()">
+                <div style='color: red;font-size: 12px;' id ="hide" > 请输入正确的邮箱号</div>
+                <input type="text" class="form-control" placeholder="验证码"id="checkCode" name="checkCode">
+                <a class="btn" onclick="smsg()" id="numbtn" >获取验证码</a>
+                <button id="a-msg" class="btn btn-lg btn-login btn-block"  onclick="checkCodee()">
+                    <i class="fa" style="font-size: 30px">注 册</i>
+                </button>
+
+                <div class="registration">
+                    还没账号?
+                    <a onclick="wu()">
+                        无账号浏览
+                    </a>
+                </div>
+                <label class="checkbox">
+                    <!--<input type="checkbox" value="remember-me"> Remember me-->
+                    <span class="pull-right">
+                           <a data-toggle="modal" href="#myModal">忘记密码</a>
+                </span>
+                </label>
+            </div>
+
+        </div>
+        <!--tab end-->
+        <!-- Modal 忘记密码-->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <input type="text" class="form-control" placeholder="邮箱账号"  autofocus onblur="check()">
+                    <input type="text" class="form-control" placeholder="验证码">
+                    <a class="btn" >获取验证码</a>
+                    <input type="text" class="form-control" placeholder="新密码"  autofocus onblur="check()">
+                    <input type="text" class="form-control" placeholder="再次输入新密码"  autofocus onblur="check()">
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                        <button class="btn btn-primary" type="button">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+    </form>
+</div>
+<!--密码登录-->
+
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script th:src="@{/js/jquery-1.10.2.min.js}" src="js/jquery-1.10.2.min.js"></script>
+<script th:src="@{/js/bootstrap.min.js}" src="js/bootstrap.min.js"></script>
+<script th:src="@{/js/modernizr.min.js}" src="js/modernizr.min.js"></script>
+<!--tab js-->
+<script th:src="@{/tab/js/jquery.min.js}" src='js/jquery.min.js'></script>
+<script  th:src="@{/tab/js/index.js}" src="js/index.js"></script>
+<!--tab js-->
+<script>
+    document.getElementById("hide").style.display="none";
+    document.getElementById("hide").style.display="none";
+    function hideagain() {
+        document.getElementById("hide").style.display="none";
+        document.getElementById("hidee").style.display="none";
+    }
+    function check(phone){
+        var reg = new RegExp("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$");
+        // var div = document.getElementById("falseEmail");
+        var obj = document.getElementById("phone");
+        if(obj.value === ""){ //输入不能为空
+            document.getElementById("hide").style.display="none";
+
+        }else if(!reg.test(obj.value)){ //正则验证不通过，格式不对
+
+            document.getElementById("hide").style.display="";
+        }else{
+            document.getElementById("hide").style.display="none";
+
+        }
+    }
+    var countdown = 60;
+    $('#numbtn').on('click',function(){
+        var obj = $("#numbtn");
+
+        if($("#phone").val() === ""){ //输入不能为空
+            document.getElementById("hide").style.display="";
+            return;
+        }
+
+        settime(obj);
+        //var类型后台认不清哈哈哈哈哈哈哈
+    })
+    function settime(obj) { //发送验证码倒计时
+        if (countdown == 0) {
+            obj.attr('disabled', false);
+            //obj.removeattr("disabled");
+            obj.html("获取验证码");
+            countdown = 60;
+            return;
+        } else {
+            obj.attr('disabled', true);
+            obj.html("重新发送(" + countdown + ")");
+            countdown--;
+
+        }
+        setTimeout(function () {
+                settime(obj)
+            }
+            , 1000)
+        // alert($("#phone").val());
+    }
+    function smsg() {
+        $.post("/smsg",{},function(data){
+        });
+    }
+    function checkCode() {
+        window.event.returnValue=false;
+        window.location.href = "http://localhost:8083/group?uid=144";
+            // window.location.reload();
+    }
+    function checkCodee() {
+        window.event.returnValue=false;
+        alert("恭喜宁注册成功");
+        window.location.href = "http://localhost:8083/group?uid=144";
+        // window.location.reload();
+
+    }
+    function wu(){
+        window.event.returnValue=false;
+        window.location.href = "http://localhost:8083/group?uid=0";
+    }
+</script>
+</body>
+
+</html>

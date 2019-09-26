@@ -1,0 +1,128 @@
+<!doctype html>
+        <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en-US"> <![endif]-->
+        <!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en-US"> <![endif]-->
+        <!--[if IE 8]>    <html class="lt-ie9" lang="en-US"> <![endif]-->
+        <!--[if gt IE 8]><!--> <html lang="en" xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
+        <head>
+                <!-- META TAGS -->
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+                <title></title>
+
+                <link rel="shortcut icon" href="b/images/favicon.png" />
+
+
+
+
+                <!-- Style Sheet-->
+            <link rel="stylesheet" href="b/css/style.css"/>
+            <link rel='stylesheet' id='bootstrap-css-css'  href='b/css/bootstrap5152.css?ver=1.0' type='text/css' media='all' />
+            <link rel='stylesheet' id='responsive-css-css'  href='b/css/responsive5152.css?ver=1.0' type='text/css' media='all' />
+            <link rel='stylesheet' id='pretty-photo-css-css'  href='b/js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4' type='text/css' media='all' />
+            <link rel='stylesheet' id='main-css-css'  href='b/css/main5152.css?ver=1.0' type='text/css' media='all' />
+            <link rel='stylesheet' id='custom-css-css'  href='b/css/custom5152.html?ver=1.0' type='text/css' media='all' />
+            <link rel='stylesheet' id='blue-skin-css'  href='b/css/blue-skin5152.css?ver=1.0' type='text/css' media='all' />
+
+
+                <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+                <!--[if lt IE 9]>
+                <script src="b/js/html5.js"></script></script>
+                <![endif]-->
+
+
+        </head>
+
+        <body>
+
+          <!-- Start of Header -->
+                <div class="header-wrapper">
+                        <header>
+                                <div class="container">
+
+
+                                        <div class="logo-container">
+                                            <img src="b/images/logoer.png" >
+                                        </div>                           
+                                </div>
+                        </header>
+                </div>
+                <!-- End of Header -->
+																				<nav class="main-nav">
+                                                <div class="menu-top-menu-container">
+                                                        <ul id="menu-top-menu" class="clearfix">
+
+                                                            <div th:if=" ${uid} gt '0'">
+                                                                <a th:href="@{/user(uid=${uid})}"><img th:src="@{/b/images/user5.png}" ></a>
+                                                            </div>
+                                                            <div th:if=" ${uid} eq '0'">
+                                                                <a href="http://localhost:8083/login"><img th:src="@{/b/images/user5.png}" ></a>
+                                                            </div>
+                                                        </ul>
+                                                </div>
+                                        </nav>
+
+
+                <!-- Start of Page Container -->
+                <div class="page-container">
+                        <div class="container">
+                                <div class="row">
+
+
+
+
+
+                                        <!-- start of page content -->
+                                        <div class="span8 main-listing">
+
+                                                <article class="format-standard type-post hentry clearfix" th:each="grouper:${grouper}">
+
+                                                        <header class="clearfix">
+
+                                                                <h3 class="post-title">
+                                                                        <a th:href="@{/class(gid=${grouper.g_id},uid=${uid})}" th:text="${grouper.g_name}"></a>
+                                                                </h3>
+
+                                                                <div class="post-meta clearfix">
+                                                                        <span class="date"></span>
+                                                                </div><!-- end of post meta -->
+
+                                                        </header>
+
+                                                        <p></p>
+
+                                                </article>
+
+                                                
+
+                                        </div>
+                                        <!-- end of page content -->
+
+
+                                       
+                                </div>
+                        </div>
+                </div>
+                <!-- End of Page Container -->
+
+
+
+
+
+
+
+
+                <a href="#top" id="scroll-top"></a>
+
+                <!-- script -->
+                <script type='text/javascript' src='b/js/jquery-1.8.3.min.js'></script>
+                <script type='text/javascript' src='b/js/jquery.easing.1.34e44.js?ver=1.3'></script>
+                <script type='text/javascript' src='b/js/prettyphoto/jquery.prettyPhotoaeb9.js?ver=3.1.4'></script>
+                <script type='text/javascript' src='b/js/jquery.liveSearchd5f7.js?ver=2.0'></script>
+				<script type='text/javascript' src='b/js/jflickrfeed.js'></script>
+                <script type='text/javascript' src='b/js/jquery.formd471.js?ver=3.18'></script>
+                <script type='text/javascript' src='b/js/jquery.validate.minfc6b.js?ver=1.10.0'></script>
+                <script type='text/javascript' src='b/js/custom5152.js?ver=1.0'></script>
+
+        </body>
+</html>

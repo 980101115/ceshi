@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.bean.FcommentDao">
+	<select id="showFcommentClass" resultType="org.spring.springboot.domain.Classer" parameterType = "Integer">
+		select c_title,c_content from classer where c_id=#{value}
+	</select>
+	<select id="showFcommentUpper" resultType="String" parameterType = "Integer">
+		select u_name from user where u_id in (select u_id from classer where c_id=#{value})
+	</select>
+	<select id="showFcommentUser" resultType="org.spring.springboot.domain.User" parameterType = "Integer">
+		select u_id,u_name from user where u_id in (select u_id from fcomment where c_id=#{value})
+	</select>
+	<select id="showFcomment" resultType="org.spring.springboot.domain.Fcomment" parameterType = "Integer">
+		select f_content,f_data,fcomment.u_id,u_name,f_id from fcomment,user where c_id=#{value} and user.u_id=fcomment.u_id
+	</select>
+	<insert id="inputFcomment" parameterType = "org.spring.springboot.domain.Fcomment">
+		insert into fcomment(c_id,u_id,f_content)
+		values (#{c_id},#{u_id},#{f_content})
+	</insert>
+	<select id="showLcomment" resultType="org.spring.springboot.domain.Lcomment" parameterType = "Integer">
+		select u_name l_followername, linshi.l_followeename,l_content, l_data, f_id, l_followerid, l_followeeid
+		from user INNER JOIN lcomment ON u_id = l_followerid and f_id in (select f_id from fcomment where c_id=#{value})
+		INNER JOIN (SELECT u_name l_followeename,l_id from user INNER JOIN lcomment ON u_id = l_followeeid) linshi
+		ON lcomment.l_id=linshi.l_id
+	</select>
+
+</mapper>

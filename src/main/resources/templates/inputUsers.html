@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8"/>
+		<title>格林</title>
+	</head>
+	<body>
+		<fieldset>
+			<legend>注册</legend>
+			<form action="inputUsers" method="post">
+				<table cellpadding="2" align="center">
+					<tr>
+						<td align="right">邮箱:</td>
+						<td>
+							<input type = "text" name = "u_email" id="u_email" />
+						</td>
+					</tr>
+					<tr>
+						<td align="right">密码:</td>
+						<td><input type="password" name = "u_password"/></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<input type="submit" value="注册"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</fieldset>
+	</body>
+</html>

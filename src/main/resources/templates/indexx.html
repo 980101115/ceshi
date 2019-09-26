@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/b/login.css}" href="../../static/css/b/login.css">
+    <script type="text/javascript" th:src="@{/js/b/jquery.min.js}" ></script>
+
+    <script type="text/javascript">
+
+        $(function(){
+            $(".name input").focus(function(){
+                $(this).prev("i").css({"background-image":"url(../../images/user2.png)"});
+            });
+            $(".name input").blur(function(){
+                $(this).prev("i").css({"background-image":"url(../../images/user1.png)"});
+            });
+            $(".password input").focus(function(){
+                $(this).prev("i").css({"background-image":"url(../../images/password2.png)"});
+            });
+            $(".password input").blur(function(){
+                $(this).prev("i").css({"background-image":"url(../../images/password1.png)"});
+            });
+        });
+
+
+
+
+    </script>
+
+</head>
+<body>
+
+
+<!--<div id='myDiv'>-->
+    <!--<div id='div1' >-->
+        <!--<span style='cursor:hand' onclick='move(this)'>向下</span>-->
+    <!--</div>-->
+    <!--<div id='div2'>-->
+        <!--<span style='cursor:hand' onclick='move(this)'>向上</span>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+    <div class="container">
+        <div class="wrap">
+            <header><em>Logo</em><span>╳╳╳技术有限公司</span></header>
+
+
+
+            <article>
+
+
+                <section>
+                    <aside>
+                    <div id ="pass">
+                        <p onclick="pass()" >信息登录</p>
+                        <em>
+                            <img th:src="@{/images/b/admin1.png}">
+                        </em>
+                         <form action="" method="post">
+                            <!--<p class="name"><i></i><input type="text" name="userName" name="userName" class="userName" placeholder="请输入用户名"></p>-->
+                            <!--<p class="password"><i></i><input type="password" name="password" class="pwd" placeholder="请输入密码"></p>-->
+                            <!--<button>登录</button>-->
+                            <!--<p class="remember"><input type="checkbox" name="remember">记住密码</p>-->
+                            <!--<p class="regist"><span>没有账号?</span><a href="regist.html">立即注册</a></p>-->
+                             <p class="name"><i></i><input type="text" name="userName" class="userName" placeholder="请输入用户名"></p>
+                             <p class="password"><i></i><input type="password" name="password"  class="pwd" placeholder="请输入密码"></p>
+                             <button>登录</button>
+                             <p class="remember"><input type="checkbox" >记住密码</p>
+                             <p class="regist"><span>没有账号?</span><a href="regist.html">立即注册</a></p>
+                            <div class="clear"></div>
+                        </form>
+                    </div>
+                    <div id ="phone">
+                        <a onclick="phone()">密码登录</a>
+                            <em>
+                                <img th:src="@{/images/b/admin1.png}">
+                            </em>
+                            <form action="" method="post">
+                                <p class="name"><i></i><input type="text"  class="userName" placeholder="请输入手机号"></p>
+                                <p class="password"><i></i><input type="password"  class="pwd" placeholder="请输入验证码"></p>
+                                <button>登录</button>
+                                <!--<p class="remember"><input type="checkbox" >记住密码</p>-->
+                                <p class="regist"><span>手机号</span><a href="regist.html">立即注册</a></p>
+                                <div class="clear"></div>
+                            </form>
+
+                    </div>
+                    </aside>
+                </section>
+
+            </article>
+
+            </div>
+            <footer>
+                <ul>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">人才招聘</a></li>
+                    <li><a href="#">友情链接</a></li>
+                    <li><a href="#">公司地址</a></li>
+                    <li><a href="#">关注我们</a></li>
+                </ul>
+                <p>本网站版权归╳╳╳技术有限公司所有，未经许可，不得转载。</p>
+            </footer>
+        </div>
+    </div>
+
+
+<script>
+    document.getElementById("phone").style.display="none";
+</script>
+
+</body>
+
+</html>
